@@ -5,9 +5,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @description:
+ * @description: 实现前后端格式统一的
  * @author: Deepcola
- * @time: 2021/1/29 19:34
+ * @time: 2021/2/21 16:12
  */
 @Getter
 @Setter

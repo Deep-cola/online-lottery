@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 抽奖设置
+ * 抽奖设置表
  */
 @Getter
 @Setter
@@ -33,17 +33,18 @@ public class Setting {
     private Date createTime;
 
     /**
-     * 新增属性 user
+     * 新增属性: User
      */
     private User user;
 
     /**
-     * 新增属性 awards 列表
+     * 新增属性: Awards 列表
      */
     private List<Award> awards;
 
     /**
-     * 新增属性 member 列表
+     * 新增属性: Member 列表
      */
     private List<Member> members;
+
 }

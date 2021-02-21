@@ -105,8 +105,9 @@
       a.id, a.name, a.count, a.award, a.setting_id, a.create_time,
       r.member_id
     FROM award a
-    JOIN record r
-    ON a.id = r.award_id
+    LEFT JOIN record r
+        ON a.id = r.award_id
     WHERE a.setting_id = #{settingId}
   </select>
+
 </mapper>

@@ -123,10 +123,11 @@
 <!--  根据用户名查询用户 -->
   <select id="selectByUsername" resultMap="BaseResultMap">
     SELECT
-    <include refid="Base_Column_List" />
-    FROM user
-    WHERE username = #{username};
+        <include refid="Base_Column_List" />
+    FROM
+         user
+    WHERE
+        username = #{username}
   </select>
-
 
 </mapper>

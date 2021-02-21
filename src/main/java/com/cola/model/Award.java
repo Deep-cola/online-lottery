@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 奖项
+ * 奖项表
  */
 @Getter
 @Setter

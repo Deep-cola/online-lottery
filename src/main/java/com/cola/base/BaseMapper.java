@@ -1,5 +1,10 @@
 package com.cola.base;
 
+/**
+ * @description:
+ * @author: Deepcola
+ * @time: 2021/2/21 16:12
+ */
 public interface BaseMapper<T> {
 
     int deleteByPrimaryKey(Integer id);

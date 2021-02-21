@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * @description:
  * @author: Deepcola
- * @time: 2021/2/2 12:14
+ * @time: 2021/2/21 16:34
  */
 @RestController
 @RequestMapping("/setting")
@@ -34,25 +34,27 @@ public class SettingController {
     private MemberService memberService;
 
     /**
+     * 抽奖设置页面数据查询
      * 进入抽奖设置页面初始化, 需要获取所有需要的数据:
-     *          setting 对象中的属性: batchNumber
-     *          setting 对象没有的属性: user(用户信息)、awards(奖项信息, 根据 setting_id 查询)、member(抽奖人员, 根据 setting_id 查询)
+     * setting 对象中的属性: batchNumber
+     * setting 对象没有的属性: user(用户信息)、
+     *                      awards(奖项信息, 根据 setting_id 查询)、
+     *                      member(抽奖人员, 根据 setting_id 查询)
      */
     @GetMapping("/query")
     public Object query(HttpSession session) {
         // 获取 session 中的 user
         User user = (User) session.getAttribute("user");
-        // 根基 setting.userId 查询 setting 信息
-        Setting setting = settingService.queryByUserId(user.getId());
+        // 根据 user.id 查询 setting 信息
+        Setting setting = settingService.queryBuUserId(user.getId());
         // 把 user 设置到 setting 新增属性 user 中
         setting.setUser(user);
         // 根据 setting_id 查询 awards, 设置到 setting 新增属性 awards 中
         List<Award> awards = awardService.queryBySettingId(setting.getId());
         setting.setAwards(awards);
-        // 根据 setting_id 查询 member, 设置到 setting 新增属性 member 中
+        // 根据 setting_id 查询 members, 设置到 setting 新增属性 members 中
         List<Member> members = memberService.queryBySettingId(setting.getId());
         setting.setMembers(members);
-
         return setting;
     }
 
@@ -61,11 +63,9 @@ public class SettingController {
      */
     @GetMapping("/update")
     public Object update(Integer batchNumber, HttpSession session) {
-        // 获取 session 中的 user
         User user = (User) session.getAttribute("user");
-        // 根据 userId 修改每次抽奖人数
+        // 根据 user 修改每次抽奖人数
         int n = settingService.updateByUserId(batchNumber, user.getId());
-
         return null;
     }
 }

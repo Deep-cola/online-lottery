@@ -22,7 +22,7 @@ create table setting(
     batch_number int not null comment '每次抽奖人数',
     create_time timestamp default NOW() comment '创建时间',
     foreign key (user_id) references user(id)
-) comment '抽奖设置';
+) comment '抽奖设置表';
 
 drop table if exists award;
 create table award(
@@ -33,7 +33,7 @@ create table award(
     setting_id int not null comment '抽奖设置 id',
     create_time timestamp default NOW() comment '创建时间',
     foreign key (setting_id) references setting(id)
-) comment '奖项';
+) comment '奖项表';
 
 drop table if exists member;
 create table member(
@@ -57,24 +57,20 @@ create table record(
 
 
 
-insert into user(id, username, password, nickname, email, age, head) values (1, 'bit', '123', '小比特', '1111@163.com', 18, 'img/test-head.jpg');
+insert into user(id, username, password, nickname, email, age, head) values (1, 'test', 'test', '测试人员', 'test@163.com', 20, 'img/test-head.jpg');
 
-## 数据字典：学生毕业年份
+
 insert into setting(id, user_id, batch_number) values (1, 1, 8);
 
-insert into award(name, count, award, setting_id) values ('特靠谱欢乐奖', 1, '深圳湾一号', 1);
-insert into award(name, count, award, setting_id) values ('特靠谱娱乐奖', 5, 'BMW X5', 1);
-insert into award(name, count, award, setting_id) values ('特靠谱励志奖', 20, '办公室一日游', 1);
+insert into award(name, count, award, setting_id) values ('一等奖', 1, '深圳湾一号', 1);
+insert into award(name, count, award, setting_id) values ('二等奖', 5, 'BMW X5', 1);
+insert into award(name, count, award, setting_id) values ('三等奖', 20, '三亚七日游', 1);
 
 
 
 ## 数据字典：学生专业
-insert into member(name, no, setting_id) values ('李寻欢', '水果刀', 1);
-insert into member(name, no, setting_id) values ('郭靖', '降猪十八掌', 1);
-insert into member(name, no, setting_id) values ('韦小宝', '抓?龙爪手', 1);
-insert into member(name, no, setting_id) values ('风清扬', '孤独九贱', 1);
-insert into member(name, no, setting_id) values ('哪吒', '喷气式电单车', 1);
-insert into member(name, no, setting_id) values ('渠昊空', 'no2', 1);
+insert into member(name, no, setting_id) values ('风清扬', 'no0', 1);
+insert into member(name, no, setting_id) values ('渠昊空', 'no1', 1);
 insert into member(name, no, setting_id) values ('闵觅珍', 'no2', 1);
 insert into member(name, no, setting_id) values ('慈新之', 'no3', 1);
 insert into member(name, no, setting_id) values ('户柔绚', 'no4', 1);
@@ -166,7 +162,6 @@ insert into member(name, no, setting_id) values ('绍美曼', 'no89', 1);
 insert into member(name, no, setting_id) values ('回访波', 'no90', 1);
 
 -- 插入抽奖记录
--- insert into record(member_id, award_id) values(56, 1);
 insert into record(member_id, award_id) values(1, 2);
 insert into record(member_id, award_id) values(33, 2);
 insert into record(member_id, award_id) values(13, 3);

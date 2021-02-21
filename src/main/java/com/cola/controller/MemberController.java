@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * @description:
  * @author: Deepcola
- * @time: 2021/2/2 12:12
+ * @time: 2021/2/21 16:34
  */
 @RestController
 @RequestMapping("/member")
@@ -21,7 +21,7 @@ public class MemberController {
     private MemberService memberService;
 
     /**
-     * 添加抽奖人员
+     * 新增抽奖人员
      */
     @PostMapping("/add")
     public Object add(@RequestBody Member member, HttpSession session) {
@@ -31,7 +31,7 @@ public class MemberController {
     }
 
     /**
-     * 次改抽奖人员
+     * 修改抽奖人员
      */
     @PostMapping("/update")
     public Object update(@RequestBody Member member) {
@@ -47,5 +47,4 @@ public class MemberController {
         int n = memberService.delete(id);
         return null;
     }
-
 }

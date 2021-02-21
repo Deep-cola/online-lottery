@@ -74,7 +74,7 @@
             <!-- insert方法通过自增主键插入数据后，主键值是否设置到对象属性中 -->
             <generatedKey column="id" sqlStatement="JDBC"/>
             <!-- 字段覆盖：表中content字段为text数据类型时，默认会生成为二进制，可以指定为字符串 -->
-<!--            <columnOverride column="content" jdbcType="VARCHAR" />-->
+            <columnOverride column="content" jdbcType="VARCHAR" />
         </table>
     </context>
 </generatorConfiguration>

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @description:
  * @author: Deepcola
- * @time: 2021/2/2 12:09
+ * @time: 2021/2/21 16:37
  */
 @Service
 public class RecordService {
@@ -20,26 +20,26 @@ public class RecordService {
     /**
      * 批量插入多条抽奖记录
      */
-    public int add(List<Integer> memberIds, Integer awardId) {
-        return recordMapper.batchInsert(memberIds, awardId);
+    public int add(String awardId, List<Integer> memberIds) {
+        return recordMapper.batchInsert(awardId, memberIds);
     }
 
     /**
-     * 删除某人的该条抽奖记录
+     * 删除当前奖项某个获奖人员
      */
     public int deleteByMemberId(Integer memberId) {
         return recordMapper.deleteByMemberId(memberId);
     }
 
     /**
-     * 删除某个奖项的所有抽奖记录
+     * 删除当前奖项所有已获奖人员
      */
     public int deleteByAwardId(Integer awardId) {
         return recordMapper.deleteByAwardId(awardId);
     }
 
     /**
-     * 清空该设置页面所有奖项纪录
+     * 重置抽奖页面: 清空该设置页面所有奖项纪录
      */
     public int deleteByUserId(Integer userId) {
         return recordMapper.deleteByUserId(userId);

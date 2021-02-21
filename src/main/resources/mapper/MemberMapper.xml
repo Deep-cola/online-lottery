@@ -92,4 +92,5 @@
     FROM member
     WHERE setting_id = #{settingId}
   </select>
+
 </mapper>

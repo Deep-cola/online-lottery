@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 /**
  * @description:
  * @author: Deepcola
- * @time: 2021/2/2 12:11
+ * @time: 2021/2/21 16:36
  */
 @Service
 public class SettingService {
@@ -16,12 +16,16 @@ public class SettingService {
     @Autowired
     private SettingMapper settingMapper;
 
-    // 根据 userId 查询 setting 信息
-    public Setting queryByUserId(Integer userId) {
+    /**
+     * 根据 userId 查询 Setting 信息
+     */
+    public Setting queryBuUserId(Integer userId) {
         return settingMapper.selectByUserId(userId);
     }
 
-    // 根据 userId 修改每次抽奖人数
+    /**
+     * 根据 userId 修改每次抽奖人数
+     */
     public int updateByUserId(Integer batchNumber, Integer userId) {
         return settingMapper.updateByUserId(batchNumber, userId);
     }

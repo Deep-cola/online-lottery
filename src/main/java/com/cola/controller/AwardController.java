@@ -3,7 +3,6 @@ package com.cola.controller;
 import com.cola.model.Award;
 import com.cola.model.User;
 import com.cola.service.AwardService;
-import com.cola.service.SettingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * @description:
  * @author: Deepcola
- * @time: 2021/2/2 12:12
+ * @time: 2021/2/21 16:35
  */
 @RestController
 @RequestMapping("/award")
@@ -21,15 +20,11 @@ public class AwardController {
     @Autowired
     private AwardService awardService;
 
-    @Autowired
-    private SettingService settingService;
-
     /**
      * 新增奖项
      */
     @PostMapping("/add")
     public Object add(@RequestBody Award award, HttpSession session) {
-        // 获取 session 中的 user
         User user = (User) session.getAttribute("user");
         // 获取 user.id, 设置到 award 数据表的 setting_id
         int n = awardService.add(award, user.getId());

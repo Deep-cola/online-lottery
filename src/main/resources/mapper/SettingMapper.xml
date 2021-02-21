@@ -74,19 +74,19 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-<!--  根据 userId 查询 setting 信息 -->
+<!--  根据 userId 查询 setting信息 -->
   <select id="selectByUserId" resultMap="BaseResultMap">
     SELECT
-    <include refid="Base_Column_List" />
-    FROM setting
+        <include refid="Base_Column_List" />
+    FROM
+        setting
     WHERE user_id = #{userId}
   </select>
-  
+
 <!--  根据 userId 修改每次抽奖人数 -->
   <update id="updateByUserId">
     UPDATE setting
     SET batch_number = #{batchNumber}
     WHERE user_id = #{userId}
   </update>
-  
 </mapper>

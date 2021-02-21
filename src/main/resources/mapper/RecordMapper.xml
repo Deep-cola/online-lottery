@@ -74,38 +74,37 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-<!--  批量插入抽奖记录 -->
+<!--  批量插入多条抽奖记录 -->
   <insert id="batchInsert">
     INSERT INTO record(member_id, award_id)
     VALUES 
-      <foreach collection="memberIds" item="item" separator=",">
+        <foreach collection="memberIds" item="item" separator=",">
           (#{item}, #{awardId})
-      </foreach>
+        </foreach>
   </insert>
 
-<!--  根据人员 id 删除某个人抽奖记录 -->
+<!--  根据 member_id 删除当前奖项某个获奖人员 -->
   <delete id="deleteByMemberId">
     DELETE FROM record
     WHERE member_id = #{memberId}
   </delete>
 
-<!--  根据奖项 id 删除某个奖项抽奖记录 -->
+<!--  根据 award_id 删除当前奖项所有已获奖人员 -->
   <delete id="deleteByAwardId">
     DELETE FROM record
-    WHERE award_id = #{AwardId}
+    WHERE award_id = #{awardId}
   </delete>
 
-<!--  多表关联删除 -->
-<!--  根据 userId 删除所有奖项抽奖记录 -->
+<!--  根据 userId 清空该设置页面所有奖项纪录 -->
   <delete id="deleteByUserId">
-    DELETE record FROM user, setting, award, member, record
+    DELETE record
+    FROM user, setting, award, member, record
     WHERE
-          user.id = setting.user_id
-    AND   setting.id = award.setting_id
-    AND   setting.id = member.setting_id
-    AND   (award.id = record.award_id
-            OR member.id = record.member_id)
+        user.id = setting.user_id
+    AND setting.id = award.setting_id
+    AND setting.id = member.setting_id
+    AND (award.id = record.award_id OR member.id = record.member_id)
     AND user.id = #{userId}
-
   </delete>
+
 </mapper>
